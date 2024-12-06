@@ -44,3 +44,14 @@ def test_add_new_user(setup_database, connection):
 Тест аутентификации пользователя с неправильным паролем.
 Тест отображения списка пользователей.
 """
+def test_login_no_new(setup_database):
+    """Тест добавления пользователя с существующим логином."""
+    add_user('testur', 'testur@example.com', 'password123')
+    a = add_user('testur', 'testur@example.com', 'password123')
+    assert not a, "Пользователь уже сидит в этой bd!"
+
+def test_password_8():
+    add_user('testur', 'testur@example.com', 'password123')
+    a = "password123"
+    assert len(a) >= 8, "Пороль должен иметь 8 символов"
+    
